@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Create health profile</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:text="${patient.patientId}"></div>
+        <div th:text="${patient.fullname}"></div>
+        <div th:text="${patient.gender}"></div>
+        <div th:text="${patient.dateOfBirth}"></div>
+        <div th:text="${patient.address}"></div>
+        <form th:action='@{${action}}' method="post" th:object='${healthProfile}'>
+            <select th:field="*{hospital}" id="hospital" name="hospital" autocomplete="on">
+                <option value="" selected="true" disabled >Select a hospital</option>
+                <option th:each="h : ${hospitalList}" th:value="${h.hospitalId}" th:text="${h.name}"></option>
+            </select>
+            <input th:field="*{code}" type="text" id="code" name="code" maxlength="200" placeholder="Code"/>
+            <input th:field="*{type}" type="text" id="type" name="type"  maxlength="200" placeholder="Type"/>
+            <input th:field="*{healthInsuranceId}" type="text" id="healthInsuranceId" name="healthInsuranceId" maxlength="200" placeholder="Health Insurance Id"/>
+            <textarea th:field="*{note}" id="note" name="note" placeholder="Note"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

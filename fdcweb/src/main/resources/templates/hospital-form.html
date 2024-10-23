@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Hospital</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <form th:action='@{${actionForm}}' method="post" th:object='${hospital}'>
+            <input th:field="*{hospitalId}" type="hidden" id="hospitalId" name="hospitalId"/>
+            <input th:field="*{name}" type="text" id="name" name="name" required="true" maxlength="200" placeholder="Name"/>
+            <input th:field="*{address}" type="text" id="address" name="address" required="true" maxlength="200" placeholder="Address"/>
+            <input th:field="*{phone}" type="tel" id="phone" name="phone" maxlength="20" placeholder="Phone"/>
+            <input th:field="*{email}" type="email" id="email" name="email" maxlength="200" placeholder="Email"/>
+            <input th:field="*{url}" type="url" id="url" name="url" maxlength="200" placeholder="Url"/>
+            <button type="submit" th:text="${submitButton}">Submit</button>
+            <a th:href="@{/hospital-list}">Cancel</a>
+        </form>
+    </body>
+</html>
