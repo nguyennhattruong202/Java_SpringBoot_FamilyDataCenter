@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}" />
+        <title>Admin patients</title>
+    </head>
+    <body class="text-sm">
+        <aside class="fixed h-full p-3 text-white bg__color--0072b5 sidebar--width">
+            <div class="flex justify-center">
+                <img class="rounded-full" src="https://placehold.co/100.png" alt="user-image"/>
+            </div>
+            <p class="text-center text-base uppercase font-bold my-3">
+                Nguyễn Nhật Trường
+            </p>
+            <hr />
+            <ul class="list-none">
+                <li>
+                    <a th:href="@{/admin/patients}" class="block p-2 hover:bg-sky-600">Quản lý bệnh nhân</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 hover:bg-sky-600">Quản lý bệnh viện</a>
+                </li>
+                <li>
+                    <a href="#" class="block p-2 hover:bg-sky-600">Quản lý hồ sơ sức khỏe</a>
+                </li>
+            </ul>
+            <hr />
+            <ul class="list-none">
+                <li><a href="#" class="block p-2 hover:bg-sky-600">Cài đặt</a></li>
+                <li><a href="#" class="block p-2 hover:bg-sky-600">Đăng xuất</a></li>
+            </ul>
+        </aside>
+        <div class="main--align">
+            <header class="bg-white border-b border-slate-300 px-3 py-5">
+                <a href="#" class="text-2xl font-black text__color--0072b5">
+                    FDC | MEDICAL INFOMATION
+                </a>
+            </header>
+            <main class="p-3">
+                <span class="uppercase font-bold text__color--0072b5">Danh sách bệnh nhân</span>
+                <a th:href="@{/admin/patient/save}" class="mx-1 hover:text-sky-600 text__color--0072b5">
+                    <i class="fa fa-plus"></i>
+                </a>
+                <a href="#" class="hover:text-sky-600 text__color--0072b5">
+                    <i class="fa fa-trash"></i>
+                </a>
+                <hr class="mb-3 mt-2" />
+                <form action="#" class="flex flex-row mb-3">
+                    <input type="search" class="basis-11/12 p-2 border" placeholder="Tìm kiếm"/>
+                    <button type="submit" class="basis-1/12 bg__color--0072b5 text-white hover:bg-sky-600">
+                        Tìm kiếm
+                    </button>
+                </form>
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr class="text__color--0072b5 border-y">
+                            <th></th>
+                            <th class="text-left py-2">Mã bệnh nhân</th>
+                            <th class="text-left py-2">Họ và tên</th>
+                            <th class="text-left py-2">Giới tính</th>
+                            <th class="text-left py-2">Ngày sinh</th>
+                            <th class="text-left py-2">Điện thoại</th>
+                            <th class="text-left py-2">Email</th>
+                            <th class="text-left py-2">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="p:${patients}" class="border-b">
+                            <td class="px-3 text-center">
+                                <input type="checkbox" />
+                            </td>
+                            <td th:text="${p.patientId}" class="py-2"></td>
+                            <td th:text="${p.fullname}" class="py-2"></td>
+                            <td th:text="${p.gender}" class="py-2"></td>
+                            <td th:text="${p.dateOfBirth}" class="py-2"></td>
+                            <td th:text="${p.phone}" class="py-2"></td>
+                            <td th:text="${p.email}" class="py-2"></td>
+                            <td class="py-2">
+                                <a href="#" class="hover:text-sky-600 text__color--0072b5">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="#" class="mx-2 hover:text-sky-600 text__color--0072b5">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="hover:text-sky-600 text__color--0072b5">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </body>
+</html>
