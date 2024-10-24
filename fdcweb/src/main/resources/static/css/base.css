@@ -17,9 +17,3 @@ body {
 tbody > tr:hover{
     background-color: #ececec;
 }
-.display--block{
-    display: block;
-}
-.display--none{
-    display: none;
-}

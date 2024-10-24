@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com"></script>
+        <script th:src="@{/js/patients.js}"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}" />
         <title>Admin patients</title>
@@ -80,7 +81,7 @@
                             <td th:text="${p.phone}" class="py-2"></td>
                             <td th:text="${p.email}" class="py-2"></td>
                             <td class="py-2">
-                                <a href="#" class="hover:text-sky-600 text__color--0072b5">
+                                <a th:href="@{'/admin/patient/' + ${p.patientId}}" class="hover:text-sky-600 text__color--0072b5">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a href="#" class="mx-2 hover:text-sky-600 text__color--0072b5">
@@ -94,6 +95,24 @@
                     </tbody>
                 </table>
             </main>
+        </div>
+        <div th:if="${!#strings.isEmpty(message) and result}" id="alert-box"
+             class="flex flex-row bg-green-100 fixed bottom-3 left-3 border border-green-400 text-green-700 px-4 py-3 min-w-80"
+             role="alert">
+            <div class="basis-1/12 font-bold"><i class="fa fa-check"></i></div>
+            <div th:text="${message}" class="basis-10/12"></div>
+            <button onclick="closeAlert()" class="basis-1/12">
+                <i class="fa fa-close"></i>
+            </button>
+        </div>
+        <div th:if="${!#strings.isEmpty(message) and !result}" id="alert-box"
+             class="flex flex-row bg-red-100 fixed bottom-3 left-3 border border-red-400 text-red-700 px-4 py-3 min-w-80"
+             role="alert">
+            <div class="basis-1/12 font-bold"><i class="fa fa-close"></i></div>
+            <div th:text="${message}" class="basis-10/12"></div>
+            <button onclick="closeAlert()" class="basis-1/12">
+                <i class="fa fa-close"></i>
+            </button>
         </div>
     </body>
 </html>
