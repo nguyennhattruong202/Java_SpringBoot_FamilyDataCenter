@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -79,6 +80,39 @@ public class PatientController {
             ra.addFlashAttribute("result", false);
             ra.addFlashAttribute("message", "Cập nhật thông tin thất bại");
             System.out.println("An exception occurred during update patient: " + e.getMessage());
+        }
+        return "redirect:/admin/patients";
+    }
+
+    @RequestMapping(value = "/admin/patient/delete/{patientId}", method = RequestMethod.GET)
+    public String deletePatient(@PathVariable Integer patientId, RedirectAttributes ra) {
+        try {
+            this.patientService.deleteById(patientId);
+            ra.addFlashAttribute("result", true);
+            ra.addFlashAttribute("message", "Xóa thành công");
+        } catch (Exception e) {
+            ra.addFlashAttribute("result", false);
+            ra.addFlashAttribute("message", "Xóa thất bại");
+            System.out.println("An exception occurred during delete patient: " + e.getMessage());
+        }
+        return "redirect:/admin/patients";
+    }
+
+    @RequestMapping(value = "/admin/patient/delete-patients", method = RequestMethod.POST)
+    public String deletePatients(@RequestParam(value = "patientIds", required = false) List<Integer> patientIds, RedirectAttributes ra) {
+        if (patientIds == null || patientIds.isEmpty()) {
+            ra.addFlashAttribute("result", false);
+            ra.addFlashAttribute("message", "Xóa thất bại");
+            return "redirect:/admin/patients";
+        }
+        try {
+            this.patientService.deleteAllById(patientIds);
+            ra.addFlashAttribute("result", true);
+            ra.addFlashAttribute("message", "Xóa thành công");
+        } catch (Exception e) {
+            ra.addFlashAttribute("result", false);
+            ra.addFlashAttribute("message", "Xóa thất bại");
+            System.out.println("An exception occurred during delete patient: " + e.getMessage());
         }
         return "redirect:/admin/patients";
     }
