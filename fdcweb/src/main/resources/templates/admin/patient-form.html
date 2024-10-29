@@ -10,7 +10,7 @@
     </head>
 
     <body class="text-sm">
-        <aside class="fixed h-full p-3 text-white bg__color--0072b5 sidebar--width">
+        <aside class="fixed h-full p-3 text-white bg-sky-600 sidebar--width">
             <div class="flex justify-center">
                 <img class="rounded-full" src="https://placehold.co/100.png" alt="user-image" />
             </div>
@@ -20,29 +20,29 @@
             <hr />
             <ul class="list-none">
                 <li>
-                    <a th:href="@{/admin/patients}" class="block p-2 hover:bg-sky-600">Quản lý bệnh nhân</a>
+                    <a th:href="@{/admin/patients}" class="block p-2 hover:bg-sky-500">Quản lý bệnh nhân</a>
                 </li>
                 <li>
-                    <a href="#" class="block p-2 hover:bg-sky-600">Quản lý bệnh viện</a>
+                    <a href="#" class="block p-2 hover:bg-sky-500">Quản lý bệnh viện</a>
                 </li>
                 <li>
-                    <a href="#" class="block p-2 hover:bg-sky-600">Quản lý hồ sơ sức khỏe</a>
+                    <a href="#" class="block p-2 hover:bg-sky-500">Quản lý hồ sơ sức khỏe</a>
                 </li>
             </ul>
             <hr />
             <ul class="list-none">
-                <li><a href="#" class="block p-2 hover:bg-sky-600">Cài đặt</a></li>
-                <li><a href="#" class="block p-2 hover:bg-sky-600">Đăng xuất</a></li>
+                <li><a href="#" class="block p-2 hover:bg-sky-500">Cài đặt</a></li>
+                <li><a href="#" class="block p-2 hover:bg-sky-500">Đăng xuất</a></li>
             </ul>
         </aside>
         <div class="main--align">
             <header class="bg-white border-b border-slate-300 px-3 py-5">
-                <a href="#" class="text-2xl font-black text__color--0072b5">
+                <a href="#" class="text-2xl font-black text-sky-600">
                     FDC | MEDICAL INFOMATION
                 </a>
             </header>
             <main class="p-3">
-                <span class="uppercase font-bold text__color--0072b5">Thông tin bệnh nhân</span>
+                <span class="uppercase font-bold text-sky-600">Thông tin bệnh nhân</span>
                 <form th:action='@{${action}}' method="post" th:object='${patient}' class="grid grid-cols-1 gap-y-3 mt-3">
                     <div th:if="${patient.patientId != null}" class="block">
                         <label for="patientId">Mã bệnh nhân</label>
@@ -116,10 +116,10 @@
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <a th:href="@{/admin/patients}" class="px-5 text__color--0072b5 hover:text-sky-600">
+                        <a th:href="@{/admin/patients}" class="px-5 text-sky-600 hover:text-sky-500">
                             <i class="fa fa-arrow-left text-lg"></i>
                         </a>
-                        <button type="submit" class="bg__color--0072b5 px-5 text-white hover:bg-sky-600">
+                        <button type="submit" class="bg-sky-600 px-5 text-white hover:bg-sky-500">
                             <i class="fa fa-save text-lg"></i>
                         </button>
                     </div>

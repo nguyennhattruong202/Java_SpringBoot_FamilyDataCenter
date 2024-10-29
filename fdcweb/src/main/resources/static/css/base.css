@@ -1,18 +1,12 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-.text__color--0072b5 {
-  color: #0072b5;
-}
-.bg__color--0072b5 {
-  background-color: #0072b5;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .sidebar--width {
-  width: 16.666667%;
+    width: 16.666667%;
 }
 .main--align {
-  width: 83.333333%;
-  margin-left: 16.666667%;
+    width: 83.333333%;
+    margin-left: 16.666667%;
 }
 tbody > tr:hover{
     background-color: #ececec;
