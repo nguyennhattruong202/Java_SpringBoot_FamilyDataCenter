@@ -65,3 +65,7 @@ constraint `conn2` foreign key(`hospital_id`) references `fdcdb`.`hospital`(`hos
 engine = InnoDB
 default character set = utf8mb4
 collate = utf8mb4_unicode_ci;
+
+drop table `fdcdb`.`health_profile`;
+drop table `fdcdb`.`hospital`;
+drop table `fdcdb`.`wp_table1`;
