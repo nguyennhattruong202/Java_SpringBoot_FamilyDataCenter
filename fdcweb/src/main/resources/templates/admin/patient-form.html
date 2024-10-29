@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Admin patients</title>
+        <title>Admin</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -58,9 +58,12 @@
                         </div>
                         <div>
                             <label for="gender">Giới tính</label>
-                            <input type="text" th:field="*{gender}" id="gender" name="gender"
-                                   class="w-full p-2 bg-slate-100 border-b border-slate-300 focus:outline-none" 
-                                   tabindex="3" required/>
+                            <select th:field="*{gender}" name="gender" id="gender"
+                                    class="w-full p-2 bg-slate-100 border-b border-slate-300 focus:outline-none" tabindex="3"
+                                    required>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
                         </div>
                         <div>
                             <label for="dateOfBirth">Ngày sinh</label>

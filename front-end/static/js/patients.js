@@ -1,5 +1,5 @@
-function closeAlert(){
-    document.getElementById('alert-box').style.display = 'none';
+function closeAlert() {
+    document.getElementById("alert-box").style.display = "none";
 }
 function toggleDeletePatientModal(patientId) {
     let modal = document.getElementById(`delete-modal-${patientId}`);
