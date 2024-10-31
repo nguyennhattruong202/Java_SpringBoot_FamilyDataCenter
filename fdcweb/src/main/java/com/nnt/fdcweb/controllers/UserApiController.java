@@ -21,6 +21,9 @@ public class UserApiController {
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
             User createUser = this.userService.createUser(user);
+            if (createUser == null) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
             return ResponseEntity.status(HttpStatus.CREATED).body(createUser);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
