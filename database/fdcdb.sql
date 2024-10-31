@@ -69,3 +69,24 @@ collate = utf8mb4_unicode_ci;
 drop table `fdcdb`.`health_profile`;
 drop table `fdcdb`.`hospital`;
 drop table `fdcdb`.`wp_table1`;
+
+drop table if exists `fdcdb`.`user`;
+create table `fdcdb`.`user`(
+`user_id` long auto_increment,
+`fullname` varchar(200) not null,
+`gender` varchar(10) not null,
+`date_of_birth` date not null,
+`phone` varchar(20) unique not null,
+`email` varchar(200) null default null,
+`id` varchar(20) null default null,
+`address` varchar(200) null default null,
+`password` varchar(100) not null,
+`role` varchar(10) not null,
+`created_date` datetime not null,
+`updated_date` datetime not null,
+`note` text null default null,
+primary key(`user_id`)
+)
+engine = InnoDB
+default character set = utf8mb4
+collate = utf8mb4_unicode_ci;
