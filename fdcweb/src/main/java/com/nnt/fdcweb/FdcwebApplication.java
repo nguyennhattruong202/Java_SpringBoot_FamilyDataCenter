@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {
     "com.nnt.fdcweb.controllers",
     "com.nnt.fdcweb.repository",
-    "com.nnt.fdcweb.services"
+    "com.nnt.fdcweb.services",
+    "com.nnt.fdcweb.config"
 })
 
 public class FdcwebApplication {
