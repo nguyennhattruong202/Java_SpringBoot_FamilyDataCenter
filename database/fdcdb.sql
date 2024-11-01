@@ -72,7 +72,7 @@ drop table `fdcdb`.`wp_table1`;
 
 drop table if exists `fdcdb`.`user`;
 create table `fdcdb`.`user`(
-`user_id` long auto_increment,
+`user_id` bigint auto_increment,
 `fullname` varchar(200) not null,
 `gender` varchar(10) not null,
 `date_of_birth` date not null,
@@ -84,7 +84,7 @@ create table `fdcdb`.`user`(
 `role` varchar(10) not null,
 `created_date` datetime not null,
 `updated_date` datetime not null,
-`note` text null default null,
+`note` tinytext null default null,
 primary key(`user_id`)
 )
 engine = InnoDB
