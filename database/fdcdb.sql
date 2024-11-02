@@ -90,3 +90,17 @@ primary key(`user_id`)
 engine = InnoDB
 default character set = utf8mb4
 collate = utf8mb4_unicode_ci;
+
+drop table if exists `fdcdb`.`user_demo`;
+create table `fdcdb`.`user_demo`(
+`id` varchar(100),
+`fullname` varchar(200) not null,
+`date_of_birth` date not null,
+`email` varchar(200) not null,
+`password` varchar(100) not null,
+`role` varchar(10) not null,
+primary key(`id`)
+)
+engine = InnoDB
+default character set = utf8mb4
+collate = utf8mb4_unicode_ci;

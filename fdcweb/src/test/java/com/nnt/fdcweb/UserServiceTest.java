@@ -4,6 +4,8 @@ import com.nnt.fdcweb.model.User;
 import com.nnt.fdcweb.repository.UserRepository;
 import com.nnt.fdcweb.services.implement.UserServiceImplement;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -33,5 +35,29 @@ public class UserServiceTest {
         User savedUser = this.userServiceImplement.createUser(user);
         System.out.println("User: " + savedUser);
         Assertions.assertEquals("Nguyen Nhat Truong", savedUser.getFullName());
+    }
+
+    @Test
+    public void testGetAllUser() {
+        User user1 = new User();
+        user1.setFullname("User 1");
+        user1.setGender("Nam");
+        user1.setDateOfBirth(LocalDate.now());
+        user1.setPhone("0988762611");
+        user1.setPassword("123456");
+        User user2 = new User();
+        user2.setFullname("User 1");
+        user2.setGender("Nam");
+        user2.setDateOfBirth(LocalDate.now());
+        user2.setPhone("0988762611");
+        user2.setPassword("123456");
+        when(this.userRepository.save(user1)).thenReturn(user1);
+        when(this.userRepository.save(user2)).thenReturn(user2);
+        User userSaved1 = this.userServiceImplement.createUser(user1);
+        User userSaved2 = this.userServiceImplement.createUser(user2);
+        when(this.userRepository.findAll()).thenReturn(Arrays.asList(userSaved1, userSaved2));
+        List<User> getListUser = this.userServiceImplement.findAll();
+        System.out.println("User 1: " + getListUser.get(0).getFullName());
+        Assertions.assertEquals("User 1", getListUser.get(0).getFullName());
     }
 }

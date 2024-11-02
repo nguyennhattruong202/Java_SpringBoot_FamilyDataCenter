@@ -93,6 +93,10 @@ public class User implements Serializable {
     public User() {
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public Long getUserId() {
         return this.userId;
     }
