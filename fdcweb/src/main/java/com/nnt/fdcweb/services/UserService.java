@@ -1,14 +1,14 @@
 package com.nnt.fdcweb.services;
 
-import com.nnt.fdcweb.model.User;
+import com.nnt.fdcweb.dto.request.UserRequest;
+import com.nnt.fdcweb.dto.response.UserResponse;
 import java.util.List;
-import org.springframework.data.domain.Page;
 
 public interface UserService {
 
-    User createUser(User user);
+    UserResponse create(UserRequest userRequest);
 
-    List<User> findAll();
-
-    Page<User> findAll(Integer page);
+    List<UserResponse> findAll();
+    
+    UserResponse update(Long userId, UserRequest userRequest);
 }
