@@ -105,5 +105,10 @@ public class UserServiceImplement implements UserService {
                 .note(userSaved.getNote())
                 .build();
     }
+
+    @Override
+    public void delete(Long userId) {
+        this.userRepository.deleteById(userId);
+    }
     
 }

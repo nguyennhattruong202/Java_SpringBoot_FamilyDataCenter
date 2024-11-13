@@ -72,4 +72,19 @@ public class UserApiController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(userResponse);
         }
     }
+
+    @RequestMapping(value = "/user/delete/{userId}", method = RequestMethod.DELETE)
+    public ResponseEntity<ApiResponse> delete(@PathVariable(value = "userId") Long userId) {
+        try {
+            this.userService.delete(userId);
+            return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.builder()
+                    .code(HttpStatus.OK.value()).message("User deleted").build());
+        } catch (Exception e) {
+            log.error("Error: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(ApiResponse.builder()
+                            .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                            .message("Server Error").build());
+        }
+    }
 }
