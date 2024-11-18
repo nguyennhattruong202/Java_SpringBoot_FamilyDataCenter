@@ -1,6 +1,8 @@
 package com.nnt.fdcweb.controllers.exception;
 
+import com.nimbusds.jose.JOSEException;
 import com.nnt.fdcweb.dto.response.ApiResponse;
+import com.nnt.fdcweb.enums.ResponseCode;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -20,16 +22,22 @@ public class ApplicationExceptionHandler {
             errors.put(error.getField(), error.getDefaultMessage());
         });
         ApiResponse<Map<String, String>> apiResponse = new ApiResponse<>();
-        apiResponse.setCode(HttpStatus.BAD_REQUEST.value());
-        apiResponse.setMessage("Validation");
+        apiResponse.setCode(ResponseCode.VALIDATION_ERROR.getCode());
+        apiResponse.setMessage(ResponseCode.VALIDATION_ERROR.name());
         apiResponse.setResult(errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiResponse);
     }
-    
-    @ExceptionHandler(NoResourceFoundException.class)
-    public void handleNoResourceFoundException(NoResourceFoundException ex){
-    
+
+    @ExceptionHandler(JOSEException.class)
+    public ResponseEntity<ApiResponse> handleJOSEException(JOSEException ex) {
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.CANNOT_GENERATE_TOKEN.getCode());
+        apiResponse.setMessage(ResponseCode.CANNOT_GENERATE_TOKEN.name());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
     }
-    
-    //NoSuchElementException
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public void handleNoResourceFoundException(NoResourceFoundException ex) {
+
+    }
 }

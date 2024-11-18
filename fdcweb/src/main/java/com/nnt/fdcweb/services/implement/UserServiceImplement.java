@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Transactional
@@ -19,7 +20,9 @@ public class UserServiceImplement implements UserService {
     
     @Autowired
     private UserRepository userRepository;
-    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserResponse create(UserRequest userRequest) {
         User user = new User();
@@ -31,7 +34,7 @@ public class UserServiceImplement implements UserService {
         user.setEmail(userRequest.getEmail());
         user.setID(userRequest.getID());
         user.setAddress(userRequest.getAddress());
-        user.setPassword(userRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setRole(UserRole.USER.name());
         user.setCreatedDate(datetime);
         user.setUpdatedDate(datetime);
@@ -86,7 +89,7 @@ public class UserServiceImplement implements UserService {
         user.setEmail(userRequest.getEmail());
         user.setID(userRequest.getID());
         user.setAddress(userRequest.getAddress());
-        user.setPassword(userRequest.getPassword());
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setNote(userRequest.getNote());
         user.setUpdatedDate(LocalDateTime.now());
         User userSaved = this.userRepository.save(user);
@@ -105,7 +108,7 @@ public class UserServiceImplement implements UserService {
                 .note(userSaved.getNote())
                 .build();
     }
-
+    
     @Override
     public void delete(Long userId) {
         this.userRepository.deleteById(userId);
