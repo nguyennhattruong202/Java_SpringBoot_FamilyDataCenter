@@ -13,16 +13,15 @@ import lombok.Data;
 @Builder
 public class UserResponse {
 
-    private Long userId;
+    private String id;
     private String fullname;
     private String gender;
     private LocalDate dateOfBirth;
     private String phone;
     private String email;
-    private String ID;
+    private String citizenIdentificationNumber;
     private String address;
-    private String role;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private String note;
 }

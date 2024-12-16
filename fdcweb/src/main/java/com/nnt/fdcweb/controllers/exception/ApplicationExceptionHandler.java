@@ -24,7 +24,7 @@ public class ApplicationExceptionHandler {
         ApiResponse<Map<String, String>> apiResponse = new ApiResponse<>();
         apiResponse.setCode(ResponseCode.VALIDATION_ERROR.getCode());
         apiResponse.setMessage(ResponseCode.VALIDATION_ERROR.name());
-        apiResponse.setResult(errors);
+        apiResponse.setData(errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiResponse);
     }
 

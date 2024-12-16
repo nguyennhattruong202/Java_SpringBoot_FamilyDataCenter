@@ -34,11 +34,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 public class AuthCredentials implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "phone", nullable = false, length = 50, unique = true)
     private String phone;

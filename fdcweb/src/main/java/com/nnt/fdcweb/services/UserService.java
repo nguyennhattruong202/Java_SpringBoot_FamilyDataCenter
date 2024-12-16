@@ -10,7 +10,7 @@ public interface UserService {
 
     List<UserResponse> findAll();
     
-    UserResponse update(Long userId, UserRequest userRequest);
+    UserResponse update(String id, UserRequest userRequest);
     
-    void delete(Long userId);
+    void delete(String id);
 }

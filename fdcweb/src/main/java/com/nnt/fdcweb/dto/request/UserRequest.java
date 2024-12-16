@@ -1,6 +1,5 @@
 package com.nnt.fdcweb.dto.request;
 
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,29 +17,27 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserRequest {
 
-    @NotNull(message = "Fullname is not null")
-    @NotBlank(message = "Fullname is not blank")
-    @Size(max = 200, message = "Fullname max size is 200 character")
+    @NotNull(message = "Fullname cannot be null")
+    @NotBlank(message = "Fullname cannot be blank")
+    @Size(max = 200, message = "Fullname cannot be longer than 200 characters")
     private String fullname;
-    @NotNull(message = "Gender is not null")
-    @NotBlank(message = "Gender is not blank")
-    @Size(max = 10, message = "Gender max size is 10 character")
+    @NotNull(message = "Gender cannot be null")
+    @NotBlank(message = "Gender cannot be blank")
+    @Size(max = 50, message = "Gender cannot be longer than 50 characters")
     private String gender;
-    @NotNull(message = "Date of birth is not null")
+    @NotNull(message = "Date of birth cannot be null")
     private LocalDate dateOfBirth;
-    @NotNull(message = "Phone is not null")
-    @NotBlank(message = "Phone is not blank")
+    @NotNull(message = "Phone cannot be null")
+    @NotBlank(message = "Phone cannot be blank")
+    @Size(max = 50, message = "Phone number cannot be longer than 50 characters")
     @Pattern(regexp = "^\\d{10}$", message = "Phone number invalid")
     private String phone;
-    @Email(message = "Email is not valid")
-    @Size(max = 200, message = "Email max size is 200 character")
+    @Email(message = "Email invalid")
+    @Size(max = 200, message = "Email cannot be longer than 200 characters")
     private String email;
-    @Size(max = 10, message = "ID max size is 10 character")
-    private String ID;
-    @Size(max = 200, message = "Address max size is 200 character")
+    @Size(max = 50, message = "Citizen identification number cannot be longer than 50 characters")
+    private String citizenIdentificationNumber;
+    @Size(max = 255, message = "Address cannot be longer than 200 characters")
     private String address;
-    @NotNull(message = "Password is not null")
-    @NotBlank(message = "Password is not blank")
-    private String password;
     private String note;
 }

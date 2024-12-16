@@ -3,17 +3,19 @@ package com.nnt.fdcweb.controllers;
 import com.nnt.fdcweb.dto.request.UserRequest;
 import com.nnt.fdcweb.dto.response.ApiResponse;
 import com.nnt.fdcweb.dto.response.UserResponse;
+import com.nnt.fdcweb.enums.ResponseCode;
 import com.nnt.fdcweb.services.UserService;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,70 +23,49 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserApiController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @RequestMapping(value = "/user/create", method = RequestMethod.POST)
+    public UserApiController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostMapping(value = "/user/create")
     public ResponseEntity<ApiResponse<UserResponse>> createUser(@Valid @RequestBody UserRequest userRequest) {
-        ApiResponse<UserResponse> userResponse = new ApiResponse<>();
-        try {
-            userResponse.setCode(HttpStatus.CREATED.value());
-            userResponse.setMessage("User created");
-            userResponse.setResult(this.userService.create(userRequest));
-            return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
-        } catch (Exception e) {
-            userResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            userResponse.setMessage("Server error");
-            log.error("Error: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(userResponse);
-        }
+        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.USER_CREATED.getCode());
+        apiResponse.setMessage(ResponseCode.USER_CREATED.getMessage());
+        apiResponse.setData(userService.create(userRequest));
+        return ResponseEntity.status(ResponseCode.USER_CREATED.getHttpStatusCode())
+                .body(apiResponse);
     }
 
-    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+    @GetMapping(value = "/user/all")
     public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUser() {
-        ApiResponse<List<UserResponse>> userResponse = new ApiResponse<>();
-        try {
-            userResponse.setCode(HttpStatus.OK.value());
-            userResponse.setMessage("Get all user");
-            userResponse.setResult(this.userService.findAll());
-            return ResponseEntity.status(HttpStatus.OK).body(userResponse);
-        } catch (Exception e) {
-            userResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            userResponse.setMessage("Server error");
-            log.error("Error: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(userResponse);
-        }
+        ApiResponse<List<UserResponse>> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.OK.getCode());
+        apiResponse.setMessage(ResponseCode.OK.getMessage());
+        apiResponse.setData(userService.findAll());
+        return ResponseEntity.status(ResponseCode.OK.getHttpStatusCode())
+                .body(apiResponse);
     }
 
-    @RequestMapping(value = "/user/update/{userId}", method = RequestMethod.PUT)
-    public ResponseEntity<ApiResponse<UserResponse>> update(@PathVariable(value = "userId") Long userId,
+    @PutMapping(value = "/user/update/{id}")
+    public ResponseEntity<ApiResponse<UserResponse>> update(@PathVariable(value = "id") String id,
             @RequestBody UserRequest userRequest) {
-        ApiResponse<UserResponse> userResponse = new ApiResponse<>();
-        try {
-            userResponse.setCode(HttpStatus.OK.value());
-            userResponse.setMessage("User updated");
-            userResponse.setResult(this.userService.update(userId, userRequest));
-            return ResponseEntity.status(HttpStatus.OK).body(userResponse);
-        } catch (Exception e) {
-            userResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            userResponse.setMessage("Server error");
-            log.error("Error: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(userResponse);
-        }
+        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.OK.getCode());
+        apiResponse.setMessage(ResponseCode.OK.getMessage());
+        apiResponse.setData(userService.update(id, userRequest));
+        return ResponseEntity.status(ResponseCode.OK.getHttpStatusCode()).body(apiResponse);
     }
 
-    @RequestMapping(value = "/user/delete/{userId}", method = RequestMethod.DELETE)
-    public ResponseEntity<ApiResponse> delete(@PathVariable(value = "userId") Long userId) {
-        try {
-            this.userService.delete(userId);
-            return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.builder()
-                    .code(HttpStatus.OK.value()).message("User deleted").build());
-        } catch (Exception e) {
-            log.error("Error: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(ApiResponse.builder()
-                            .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                            .message("Server Error").build());
-        }
+    @DeleteMapping(value = "/user/delete/{id}")
+    public ResponseEntity<ApiResponse<String>> delete(@PathVariable(value = "id") String id) {
+        userService.delete(id);
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.OK.getCode());
+        apiResponse.setMessage(ResponseCode.OK.getMessage());
+        apiResponse.setData("User deleted");
+        return ResponseEntity.status(ResponseCode.OK.getHttpStatusCode()).body(apiResponse);
     }
 }
