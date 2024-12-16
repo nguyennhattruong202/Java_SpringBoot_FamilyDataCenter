@@ -3,7 +3,7 @@ package com.nnt.fdcweb.services.implement;
 import com.nnt.fdcweb.dto.request.UserRequest;
 import com.nnt.fdcweb.dto.response.UserResponse;
 import com.nnt.fdcweb.enums.UserRole;
-import com.nnt.fdcweb.model.User;
+import com.nnt.fdcweb.entity.User;
 import com.nnt.fdcweb.repository.UserRepository;
 import com.nnt.fdcweb.services.UserService;
 import jakarta.transaction.Transactional;

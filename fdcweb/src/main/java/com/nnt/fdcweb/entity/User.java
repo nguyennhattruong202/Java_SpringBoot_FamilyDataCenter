@@ -1,4 +1,4 @@
-package com.nnt.fdcweb.model;
+package com.nnt.fdcweb.entity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -31,17 +32,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Basic(optional = false)
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "id")
+    private String id;
     @Basic(optional = false)
     @Column(name = "fullname", nullable = false, length = 200)
     private String fullname;
     @Basic(optional = false)
-    @Column(name = "gender", nullable = false, length = 10)
+    @Column(name = "gender", nullable = false, length = 50)
     private String gender;
     @Basic(optional = false)
     @Column(name = "date_of_birth", nullable = false)
@@ -49,34 +49,30 @@ public class User implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
     @Basic(optional = false)
-    @Column(name = "phone", nullable = false, length = 20, unique = true)
+    @Column(name = "phone", nullable = false, length = 50, unique = true)
     private String phone;
     @Basic(optional = true)
     @Column(name = "email", nullable = true, length = 200)
     private String email;
     @Basic(optional = true)
-    @Column(name = "id", nullable = true, length = 20)
-    private String ID;
+    @Column(name = "citizen_identification_number", nullable = true, length = 50, unique = true)
+    private String citizenIdentificationNumber;
     @Basic(optional = true)
-    @Column(name = "address", nullable = true, length = 200)
+    @Column(name = "address", nullable = true, length = 255)
     private String address;
     @Basic(optional = false)
-    @Column(name = "password", nullable = false, length = 100)
-    private String password;
-    @Basic(optional = false)
-    @Column(name = "role", nullable = false, length = 10)
-    private String role;
-    @Basic(optional = false)
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_at", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
     @Basic(optional = false)
-    @Column(name = "updated_date", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime updatedDate;
+    private LocalDateTime updatedAt;
     @Lob
     @Column(name = "note", nullable = true)
     private String note;
+    @OneToOne(mappedBy = "user")
+    private AuthCredentials authCredentials;
 }

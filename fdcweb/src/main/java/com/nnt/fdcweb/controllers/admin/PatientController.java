@@ -1,6 +1,6 @@
 package com.nnt.fdcweb.controllers.admin;
 
-import com.nnt.fdcweb.model.Patient;
+import com.nnt.fdcweb.entity.Patient;
 import com.nnt.fdcweb.services.PatientService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.nnt.fdcweb.config;
 
 import com.nnt.fdcweb.enums.UserRole;
-import com.nnt.fdcweb.model.User;
+import com.nnt.fdcweb.entity.User;
 import com.nnt.fdcweb.repository.UserRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

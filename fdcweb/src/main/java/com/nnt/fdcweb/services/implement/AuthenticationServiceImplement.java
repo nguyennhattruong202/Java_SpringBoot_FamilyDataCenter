@@ -16,7 +16,7 @@ import com.nnt.fdcweb.dto.request.IntrospectRequest;
 import com.nnt.fdcweb.dto.response.AuthenticationResponse;
 import com.nnt.fdcweb.dto.response.IntrospectResponse;
 import com.nnt.fdcweb.enums.ResponseCode;
-import com.nnt.fdcweb.model.User;
+import com.nnt.fdcweb.entity.User;
 import com.nnt.fdcweb.repository.UserRepository;
 import com.nnt.fdcweb.services.AuthenticationService;
 import jakarta.transaction.Transactional;
