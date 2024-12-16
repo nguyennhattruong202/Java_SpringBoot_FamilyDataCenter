@@ -33,64 +33,64 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthenticationServiceImplement implements AuthenticationService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Value("${jwt.signer-key}")
-    private String SIGNER_KEY;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private UserRepository userRepository;
+//    @Value("${jwt.signer-key}")
+//    private String SIGNER_KEY;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
-    private String generateToken(User user) {
-        JWSHeader jWSHeader = new JWSHeader(JWSAlgorithm.HS512);
-        JWTClaimsSet jWTClaimsSet = new JWTClaimsSet.Builder()
-                .subject(user.getPhone())
-                .issuer("fdcweb")
-                .issueTime(new Date())
-                .expirationTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
-                .claim("scope", user.getRole())
-                .build();
-        Payload payload = new Payload(jWTClaimsSet.toJSONObject());
-        JWSObject jWSObject = new JWSObject(jWSHeader, payload);
-        try {
-            jWSObject.sign(new MACSigner(SIGNER_KEY.getBytes()));
-            return jWSObject.serialize();
-        } catch (JOSEException e) {
-            throw new AppException(ResponseCode.CANNOT_GENERATE_TOKEN);
-        }
-    }
+//    private String generateToken(User user) {
+//        JWSHeader jWSHeader = new JWSHeader(JWSAlgorithm.HS512);
+//        JWTClaimsSet jWTClaimsSet = new JWTClaimsSet.Builder()
+//                .subject(user.getPhone())
+//                .issuer("fdcweb")
+//                .issueTime(new Date())
+//                .expirationTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
+//                .claim("scope", user.getRole())
+//                .build();
+//        Payload payload = new Payload(jWTClaimsSet.toJSONObject());
+//        JWSObject jWSObject = new JWSObject(jWSHeader, payload);
+//        try {
+//            jWSObject.sign(new MACSigner(SIGNER_KEY.getBytes()));
+//            return jWSObject.serialize();
+//        } catch (JOSEException e) {
+//            throw new AppException(ResponseCode.CANNOT_GENERATE_TOKEN);
+//        }
+//    }
 
-    @Override
-    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
+//    @Override
+//    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
+//
+//        User user = this.userRepository.findByPhone(authenticationRequest.getPhone()).orElse(null);
+//        if (user == null) {
+//            return new AuthenticationResponse(ResponseCode.NOT_EXISTS.getCode(),
+//                    ResponseCode.NOT_EXISTS.name(), null);
+//        }
+//        boolean authenticated = passwordEncoder.matches(authenticationRequest.getPassword(), user.getPassword());
+//        if (!authenticated) {
+//            return new AuthenticationResponse(ResponseCode.UNAUTHENTICATED.getCode(),
+//                    ResponseCode.UNAUTHENTICATED.name(), null);
+//        }
+//        return new AuthenticationResponse(ResponseCode.AUTHENTICATED.getCode(),
+//                ResponseCode.AUTHENTICATED.name(), generateToken(user));
+//    }
 
-        User user = this.userRepository.findByPhone(authenticationRequest.getPhone()).orElse(null);
-        if (user == null) {
-            return new AuthenticationResponse(ResponseCode.NOT_EXISTS.getCode(),
-                    ResponseCode.NOT_EXISTS.name(), null);
-        }
-        boolean authenticated = passwordEncoder.matches(authenticationRequest.getPassword(), user.getPassword());
-        if (!authenticated) {
-            return new AuthenticationResponse(ResponseCode.UNAUTHENTICATED.getCode(),
-                    ResponseCode.UNAUTHENTICATED.name(), null);
-        }
-        return new AuthenticationResponse(ResponseCode.AUTHENTICATED.getCode(),
-                ResponseCode.AUTHENTICATED.name(), generateToken(user));
-    }
-
-    @Override
-    public IntrospectResponse introspect(IntrospectRequest introspectRequest) throws JOSEException, ParseException {
-        String token = introspectRequest.getToken();
-        JWSVerifier verifier = new MACVerifier(SIGNER_KEY.getBytes());
-        SignedJWT signedJWT = SignedJWT.parse(token);
-        Date expiryTime = signedJWT.getJWTClaimsSet().getExpirationTime();
-        boolean verified = signedJWT.verify(verifier);
-        IntrospectResponse introspectResponse = new IntrospectResponse();
-        if (verified && expiryTime.after(new Date())) {
-            introspectResponse.setCode(ResponseCode.TOKEN_OK.getCode());
-            introspectResponse.setMessage(ResponseCode.TOKEN_OK.name());
-        } else {
-            introspectResponse.setCode(ResponseCode.INVALID_TOKEN.getCode());
-            introspectResponse.setMessage(ResponseCode.INVALID_TOKEN.name());
-        }
-        return introspectResponse;
-    }
+//    @Override
+//    public IntrospectResponse introspect(IntrospectRequest introspectRequest) throws JOSEException, ParseException {
+//        String token = introspectRequest.getToken();
+//        JWSVerifier verifier = new MACVerifier(SIGNER_KEY.getBytes());
+//        SignedJWT signedJWT = SignedJWT.parse(token);
+//        Date expiryTime = signedJWT.getJWTClaimsSet().getExpirationTime();
+//        boolean verified = signedJWT.verify(verifier);
+//        IntrospectResponse introspectResponse = new IntrospectResponse();
+//        if (verified && expiryTime.after(new Date())) {
+//            introspectResponse.setCode(ResponseCode.TOKEN_OK.getCode());
+//            introspectResponse.setMessage(ResponseCode.TOKEN_OK.name());
+//        } else {
+//            introspectResponse.setCode(ResponseCode.INVALID_TOKEN.getCode());
+//            introspectResponse.setMessage(ResponseCode.INVALID_TOKEN.name());
+//        }
+//        return introspectResponse;
+//    }
 }

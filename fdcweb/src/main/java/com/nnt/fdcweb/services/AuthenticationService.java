@@ -9,8 +9,8 @@ import java.text.ParseException;
 
 public interface AuthenticationService {
 
-    AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest);
+//    AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest);
 
-    IntrospectResponse introspect(IntrospectRequest introspectRequest) throws JOSEException, ParseException;
+//    IntrospectResponse introspect(IntrospectRequest introspectRequest) throws JOSEException, ParseException;
 
 }

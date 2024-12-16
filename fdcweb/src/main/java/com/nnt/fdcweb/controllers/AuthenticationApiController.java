@@ -17,24 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api/auth")
+//@RestController
+//@RequestMapping("/api/auth")
 public class AuthenticationApiController {
 
-    @Autowired
-    private AuthenticationService authenticationService;
+//    @Autowired
+//    private AuthenticationService authenticationService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<AuthenticationResponse> authenticate(@Valid @RequestBody AuthenticationRequest authenticationRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.authenticationService.authenticate(authenticationRequest));
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public ResponseEntity<AuthenticationResponse> authenticate(@Valid @RequestBody AuthenticationRequest authenticationRequest) {
+//        return ResponseEntity.status(HttpStatus.OK).body(this.authenticationService.authenticate(authenticationRequest));
+//    }
 
-    @RequestMapping(value = "/introspect", method = RequestMethod.POST)
-    public ResponseEntity<IntrospectResponse> introspect(@Valid @RequestBody IntrospectRequest introspectRequest) throws JOSEException, ParseException {
-        IntrospectResponse introspectResponse = this.authenticationService.introspect(introspectRequest);
-        if (introspectResponse.getCode() == ResponseCode.TOKEN_OK.getCode()) {
-            return ResponseEntity.status(HttpStatus.OK).body(introspectResponse);
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(introspectResponse);
-    }
+//    @RequestMapping(value = "/introspect", method = RequestMethod.POST)
+//    public ResponseEntity<IntrospectResponse> introspect(@Valid @RequestBody IntrospectRequest introspectRequest) throws JOSEException, ParseException {
+//        IntrospectResponse introspectResponse = this.authenticationService.introspect(introspectRequest);
+//        if (introspectResponse.getCode() == ResponseCode.TOKEN_OK.getCode()) {
+//            return ResponseEntity.status(HttpStatus.OK).body(introspectResponse);
+//        }
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(introspectResponse);
+//    }
 }
