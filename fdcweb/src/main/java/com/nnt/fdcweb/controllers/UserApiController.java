@@ -29,7 +29,7 @@ public class UserApiController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/user/create")
+    @PostMapping(value = "/user/create-account")
     public ResponseEntity<ApiResponse<UserResponse>> createUser(@Valid @RequestBody UserRequest userRequest) {
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
         apiResponse.setCode(ResponseCode.USER_CREATED.getCode());

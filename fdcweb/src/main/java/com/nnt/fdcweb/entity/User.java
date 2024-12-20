@@ -22,6 +22,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -61,12 +63,14 @@ public class User implements Serializable {
     @Column(name = "address", nullable = true, length = 255)
     private String address;
     @Basic(optional = false)
-    @Column(name = "created_at", nullable = false)
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
     @Basic(optional = false)
-    @Column(name = "updated_at", nullable = false)
+    @UpdateTimestamp
+    @Column(name = "updated_at")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime updatedAt;
