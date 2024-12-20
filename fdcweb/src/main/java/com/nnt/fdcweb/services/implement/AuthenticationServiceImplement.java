@@ -1,36 +1,36 @@
 package com.nnt.fdcweb.services.implement;
 
-import com.nimbusds.jose.JOSEException;
-import com.nimbusds.jose.JWSAlgorithm;
-import com.nimbusds.jose.JWSHeader;
-import com.nimbusds.jose.JWSObject;
-import com.nimbusds.jose.JWSVerifier;
-import com.nimbusds.jose.Payload;
-import com.nimbusds.jose.crypto.MACSigner;
-import com.nimbusds.jose.crypto.MACVerifier;
-import com.nimbusds.jwt.JWTClaimsSet;
-import com.nimbusds.jwt.SignedJWT;
-import com.nnt.fdcweb.controllers.exception.AppException;
-import com.nnt.fdcweb.dto.request.AuthenticationRequest;
-import com.nnt.fdcweb.dto.request.IntrospectRequest;
-import com.nnt.fdcweb.dto.response.AuthenticationResponse;
-import com.nnt.fdcweb.dto.response.IntrospectResponse;
-import com.nnt.fdcweb.enums.ResponseCode;
-import com.nnt.fdcweb.entity.User;
-import com.nnt.fdcweb.repository.UserRepository;
+//import com.nimbusds.jose.JOSEException;
+//import com.nimbusds.jose.JWSAlgorithm;
+//import com.nimbusds.jose.JWSHeader;
+//import com.nimbusds.jose.JWSObject;
+//import com.nimbusds.jose.JWSVerifier;
+//import com.nimbusds.jose.Payload;
+//import com.nimbusds.jose.crypto.MACSigner;
+//import com.nimbusds.jose.crypto.MACVerifier;
+//import com.nimbusds.jwt.JWTClaimsSet;
+//import com.nimbusds.jwt.SignedJWT;
+//import com.nnt.fdcweb.controllers.exception.AppException;
+//import com.nnt.fdcweb.dto.request.AuthenticationRequest;
+//import com.nnt.fdcweb.dto.request.IntrospectRequest;
+//import com.nnt.fdcweb.dto.response.AuthenticationResponse;
+//import com.nnt.fdcweb.dto.response.IntrospectResponse;
+//import com.nnt.fdcweb.enums.ResponseCode;
+//import com.nnt.fdcweb.entity.User;
+//import com.nnt.fdcweb.repository.UserRepository;
 import com.nnt.fdcweb.services.AuthenticationService;
-import jakarta.transaction.Transactional;
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+//import jakarta.transaction.Transactional;
+//import java.text.ParseException;
+//import java.time.Instant;
+//import java.time.temporal.ChronoUnit;
+//import java.util.Date;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.stereotype.Service;
 
-@Transactional
-@Service
+//@Transactional
+//@Service
 public class AuthenticationServiceImplement implements AuthenticationService {
 
 //    @Autowired
