@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <h1>FDC | FAMILY DATA CENTER</h1>
+    <h3>Tạo tài khoản</h3>
+    <form id="userForm">
+        <label for="name">Họ và tên:</label>
+        <input type="text" id="fullname" name="fullname" required>
+        <br><br>
+        <input type="radio" id="male" name="gender" value="Nam" checked>
+        <label for="male">Nam</label>
+        <input type="radio" id="female" name="gender" value="Nữ">
+        <label for="female">Nữ</label>
+        <br><br>
+        <label for="dateOfBirth">Ngày sinh:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+        <br><br>
+        <label for="phone">Số điện thoại:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <br><br>
+        <a href="#">Đăng nhập</a>
+        <button type="submit">Tạo tài khoản</button>
+    </form>
+    <script src="/static/public/js/demo.js"></script>
+</body>
+</html>
