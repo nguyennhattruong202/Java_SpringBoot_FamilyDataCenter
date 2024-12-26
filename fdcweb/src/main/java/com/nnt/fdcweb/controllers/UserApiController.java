@@ -1,7 +1,9 @@
 package com.nnt.fdcweb.controllers;
 
+import com.nnt.fdcweb.dto.request.CreateAccountRequest;
 import com.nnt.fdcweb.dto.request.UserRequest;
 import com.nnt.fdcweb.dto.response.ApiResponse;
+import com.nnt.fdcweb.dto.response.CreateAccountResponse;
 import com.nnt.fdcweb.dto.response.UserResponse;
 import com.nnt.fdcweb.enums.ResponseCode;
 import com.nnt.fdcweb.services.UserService;
@@ -30,12 +32,13 @@ public class UserApiController {
     }
 
     @PostMapping(value = "/user/create-account")
-    public ResponseEntity<ApiResponse<UserResponse>> createUser(@Valid @RequestBody UserRequest userRequest) {
-        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
-        apiResponse.setCode(ResponseCode.USER_CREATED.getCode());
-        apiResponse.setMessage(ResponseCode.USER_CREATED.getMessage());
-        apiResponse.setData(userService.create(userRequest));
-        return ResponseEntity.status(ResponseCode.USER_CREATED.getHttpStatusCode())
+    public ResponseEntity<ApiResponse<CreateAccountResponse>> createAccount(@Valid
+            @RequestBody CreateAccountRequest createAccountRequest) {
+        ApiResponse<CreateAccountResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setCode(ResponseCode.ACCOUNT_CREATED.getCode());
+        apiResponse.setMessage(ResponseCode.ACCOUNT_CREATED.getMessage());
+        apiResponse.setData(userService.createAccount(createAccountRequest));
+        return ResponseEntity.status(ResponseCode.ACCOUNT_CREATED.getHttpStatusCode())
                 .body(apiResponse);
     }
 

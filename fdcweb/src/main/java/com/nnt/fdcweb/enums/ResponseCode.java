@@ -11,6 +11,7 @@ public enum ResponseCode {
     AUTHENTICATED(701, "Authenticated", HttpStatus.OK),
     TOKEN_OK(702, "Token successful", HttpStatus.OK),
     USER_CREATED(703, "User created", HttpStatus.CREATED),
+    ACCOUNT_CREATED(704, "Account created", HttpStatus.CREATED),
     UNAUTHENTICATED(900, "Unauthenticated", HttpStatus.UNAUTHORIZED),
     NOT_EXISTS(901, "Not exists", HttpStatus.NOT_FOUND),
     TOKEN_INVALID(902, "Token invalid", HttpStatus.UNAUTHORIZED),

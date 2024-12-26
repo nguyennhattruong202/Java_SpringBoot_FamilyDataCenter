@@ -1,15 +1,17 @@
 package com.nnt.fdcweb.controllers.exception;
 
-import com.nnt.fdcweb.enums.ResponseCode;
-import lombok.AllArgsConstructor;
+import com.nnt.fdcweb.enums.ErrorCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class AppException extends RuntimeException {
 
-    private ResponseCode responseCode;
+    private ErrorCode errorCode;
 
+    public AppException(ErrorCode errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
+    }
 }

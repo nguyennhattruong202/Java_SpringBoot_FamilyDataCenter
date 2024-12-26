@@ -1,6 +1,8 @@
 package com.nnt.fdcweb.services.implement;
 
+import com.nnt.fdcweb.dto.request.CreateAccountRequest;
 import com.nnt.fdcweb.dto.request.UserRequest;
+import com.nnt.fdcweb.dto.response.CreateAccountResponse;
 import com.nnt.fdcweb.dto.response.UserResponse;
 import com.nnt.fdcweb.entity.User;
 import com.nnt.fdcweb.mapper.UserMapper;
@@ -19,6 +21,18 @@ public class UserServiceImplement implements UserService {
 
     public UserServiceImplement(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public CreateAccountResponse createAccount(CreateAccountRequest createAccountRequest) {
+        User user = UserMapper.toUser(createAccountRequest);
+        return UserMapper.toCreateAccountResponse(userRepository.save(user));
+    }
+
+    @Override
+    public CreateAccountResponse findById(String id) {
+        User user = userRepository.findById(id).get();
+        return UserMapper.toCreateAccountResponse(user);
     }
 
     @Override

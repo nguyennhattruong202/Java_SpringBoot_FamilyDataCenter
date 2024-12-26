@@ -1,5 +1,6 @@
 package com.nnt.fdcweb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -78,5 +79,6 @@ public class User implements Serializable {
     @Column(name = "note", nullable = true)
     private String note;
     @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private AuthCredentials authCredentials;
 }

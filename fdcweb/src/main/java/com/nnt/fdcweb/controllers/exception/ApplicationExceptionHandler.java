@@ -28,6 +28,15 @@ public class ApplicationExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiResponse);
     }
 
+    @ExceptionHandler(AppException.class)
+    public ResponseEntity<ApiResponse<Void>> appExceptionHandler(AppException appException) {
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setCode(appException.getErrorCode().getCode());
+        apiResponse.setMessage(appException.getErrorCode().getMessage());
+        apiResponse.setData(null);
+        return ResponseEntity.status(appException.getErrorCode().getHttpStatusCode()).body(apiResponse);
+    }
+
 //    @ExceptionHandler(JOSEException.class)
 //    public ResponseEntity<ApiResponse> handleJOSEException(JOSEException ex) {
 //        ApiResponse<String> apiResponse = new ApiResponse<>();
@@ -35,7 +44,6 @@ public class ApplicationExceptionHandler {
 //        apiResponse.setMessage(ResponseCode.CANNOT_GENERATE_TOKEN.name());
 //        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
 //    }
-
 //    @ExceptionHandler(NoResourceFoundException.class)
 //    public void handleNoResourceFoundException(NoResourceFoundException ex) {
 //
