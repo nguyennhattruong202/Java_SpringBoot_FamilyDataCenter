@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @Slf4j
-public class UserApiController {
+public class ApiUserController {
 
     private final UserService userService;
 
-    public UserApiController(UserService userService) {
+    public ApiUserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -43,7 +43,7 @@ public class UserApiController {
     }
 
     @GetMapping(value = "/user/all")
-    public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUser() {
+    public ResponseEntity<ApiResponse<List<UserResponse>>> findAll() {
         ApiResponse<List<UserResponse>> apiResponse = new ApiResponse<>();
         apiResponse.setCode(ResponseCode.OK.getCode());
         apiResponse.setMessage(ResponseCode.OK.getMessage());

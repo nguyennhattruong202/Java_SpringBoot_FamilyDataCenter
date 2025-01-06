@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
+    <title>FDC | Create account</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/public/css/create-account.css" />
 </head>
+
 <body>
-    <h1>FDC | FAMILY DATA CENTER</h1>
-    <h3>Tạo tài khoản</h3>
-    <form id="userForm">
-        <label for="name">Họ và tên:</label>
-        <input type="text" id="fullname" name="fullname" required>
-        <br><br>
-        <input type="radio" id="male" name="gender" value="Nam" checked>
-        <label for="male">Nam</label>
-        <input type="radio" id="female" name="gender" value="Nữ">
-        <label for="female">Nữ</label>
-        <br><br>
-        <label for="dateOfBirth">Ngày sinh:</label>
-        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
-        <br><br>
-        <label for="phone">Số điện thoại:</label>
-        <input type="tel" id="phone" name="phone" required>
-        <br><br>
-        <a href="#">Đăng nhập</a>
-        <button type="submit">Tiếp theo</button>
-    </form>
-    <script src="/static/public/js/demo.js"></script>
+    <div class="container">
+        <div class="container__left">
+            <h1>FDC | FAMILY DATA CENTER</h1>
+        </div>
+        <div class="container__right">
+            <form id="user-form">
+                <h3>Tạo tài khoản</h3>
+                <br /><br />
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" required />
+                <br />
+                <br />
+                <input type="radio" id="male" name="gender" value="Nam" checked />
+                <label for="male">Nam</label>
+                <input type="radio" id="female" name="gender" value="Nữ" />
+                <label for="female">Nữ</label>
+                <br /><br />
+                <label for="date-of-birth">Ngày sinh</label>
+                <input type="date" id="date-of-birth" name="date-of-birth" required />
+                <br /><br />
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" required />
+                <br /><br />
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required />
+                <br /><br />
+                <div class="container--action">
+                    <a href="#">Đăng nhập</a>
+                    <button type="submit">Tạo tài khoản</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/public/js/create-account.js"></script>
 </body>
+
 </html>
