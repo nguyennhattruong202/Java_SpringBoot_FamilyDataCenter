@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequest {
+public class SignInRequest {
 
     @NotNull(message = "Phone cannot be null")
     @NotBlank(message = "Phone cannot be blank")

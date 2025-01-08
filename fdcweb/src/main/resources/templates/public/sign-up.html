@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>FDC | Create account</title>
+        <title>FDC | Sign up</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{/public/css/create-account.css}" />
+        <link rel="stylesheet" th:href="@{/public/css/sign-in-up.css}" />
     </head>
     <body>
         <div class="container">
             <div class="container__left"><h1>FDC | FAMILY DATA CENTER</h1></div>
             <div class="container__right">
-                <form id="user-form">
+                <form id="form-sign-up">
                     <h3>Tạo tài khoản</h3>
                     <br /><br />
                     <label for="fullname">Họ và tên</label>
@@ -31,12 +31,12 @@
                     <input type="password" id="password" name="password" required />
                     <br /><br />
                     <div class="container--action">
-                        <a href="#">Đăng nhập</a>
+                        <a th:href="@{/sign-in}">Đăng nhập</a>
                         <button type="submit">Tạo tài khoản</button>
                     </div>
                 </form>
             </div>
         </div>
-        <script th:src="@{/public/js/create-account.js}"></script>
+        <script th:src="@{/public/js/sign-up.js}"></script>
     </body>
 </html>

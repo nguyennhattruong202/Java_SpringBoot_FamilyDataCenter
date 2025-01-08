@@ -2,7 +2,7 @@ package com.nnt.fdcweb.services.implement;
 
 import com.nnt.fdcweb.controllers.exception.AppException;
 import com.nnt.fdcweb.dto.request.AuthCredentialsRequest;
-import com.nnt.fdcweb.dto.request.LoginRequest;
+import com.nnt.fdcweb.dto.request.SignInRequest;
 import com.nnt.fdcweb.dto.response.AuthCredentialsResponse;
 import com.nnt.fdcweb.entity.AuthCredentials;
 import com.nnt.fdcweb.entity.User;
@@ -31,11 +31,11 @@ public class AuthCredentialsServiceImplement implements AuthCredentialsService {
     }
 
     @Override
-    public User login(LoginRequest loginRequest) {
+    public User signIn(SignInRequest signInRequest) {
         AuthCredentials authCredentials = authCredentialsRepository
-                .findByPhone(loginRequest.getPhone()).orElseThrow(()
+                .findByPhone(signInRequest.getPhone()).orElseThrow(()
                 -> new AppException(ErrorCode.INVALID_CREDENTIALS));
-        if (!passwordEncoder.matches(loginRequest.getPassword(), authCredentials
+        if (!passwordEncoder.matches(signInRequest.getPassword(), authCredentials
                 .getPassword())) {
             throw new AppException(ErrorCode.INVALID_CREDENTIALS);
         }

@@ -69,7 +69,7 @@ async function createAccountHandler() {
     }
 }
 
-document.getElementById('user-form').addEventListener('submit', (event) => {
+document.getElementById('form-sign-up').addEventListener('submit', (event) => {
     event.preventDefault();
     createAccountHandler();
 });
