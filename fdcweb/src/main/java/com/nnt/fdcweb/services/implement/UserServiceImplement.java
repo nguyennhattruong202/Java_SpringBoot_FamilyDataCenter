@@ -1,10 +1,13 @@
 package com.nnt.fdcweb.services.implement;
 
+import com.nnt.fdcweb.controllers.exception.AppException;
 import com.nnt.fdcweb.dto.request.CreateAccountRequest;
 import com.nnt.fdcweb.dto.request.UserRequest;
+import com.nnt.fdcweb.dto.response.ApiResponse;
 import com.nnt.fdcweb.dto.response.CreateAccountResponse;
 import com.nnt.fdcweb.dto.response.UserResponse;
 import com.nnt.fdcweb.entity.User;
+import com.nnt.fdcweb.enums.ResponseCode;
 import com.nnt.fdcweb.mapper.UserMapper;
 import com.nnt.fdcweb.repository.UserRepository;
 import com.nnt.fdcweb.services.UserService;
@@ -67,8 +70,14 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
-    public void delete(String id) {
-        userRepository.deleteById(id);
+    public ApiResponse<Void> delete(String id) {
+        User user = userRepository.findById(id).orElseThrow(()-> new AppException(ResponseCode.NOT_EXISTS));
+        userRepository.delete(user);
+        ApiResponse<Void> apiResponse = new ApiResponse();
+        apiResponse.setCode(ResponseCode.DELETED.getCode());
+        apiResponse.setMessage(ResponseCode.DELETED.getMessage());
+        apiResponse.setData(null);
+        return apiResponse;
     }
 
 }

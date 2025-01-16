@@ -1,6 +1,6 @@
 package com.nnt.fdcweb.controllers.exception;
 
-import com.nnt.fdcweb.enums.ErrorCode;
+import com.nnt.fdcweb.enums.ResponseCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 public class AppException extends RuntimeException {
 
-    private ErrorCode errorCode;
+    private ResponseCode responseCode;
 
-    public AppException(ErrorCode errorCode) {
-        super(errorCode.getMessage());
-        this.errorCode = errorCode;
+    public AppException(ResponseCode responseCode) {
+        super(responseCode.getMessage());
+        this.responseCode = responseCode;
     }
 }

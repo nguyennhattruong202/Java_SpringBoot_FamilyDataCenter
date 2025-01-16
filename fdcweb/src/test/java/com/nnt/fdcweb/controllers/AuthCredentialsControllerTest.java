@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nnt.fdcweb.controllers.exception.AppException;
 import com.nnt.fdcweb.dto.request.SignInRequest;
 import com.nnt.fdcweb.entity.User;
-import com.nnt.fdcweb.enums.ErrorCode;
+import com.nnt.fdcweb.enums.ResponseCode;
 import com.nnt.fdcweb.services.AuthCredentialsService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -84,7 +84,7 @@ public class AuthCredentialsControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String content = objectMapper.writeValueAsString(loginFailRequest);
         Mockito.when(authCredentialsService.signIn(loginFailRequest))
-                .thenThrow(new AppException(ErrorCode.INVALID_CREDENTIALS));
+                .thenThrow(new AppException(ResponseCode.INVALID_CREDENTIALS));
         mockMvc.perform(MockMvcRequestBuilders.post("/api/login")
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content(content))
                 .andExpect(MockMvcResultMatchers.status().isUnauthorized())

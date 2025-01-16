@@ -6,7 +6,7 @@ import com.nnt.fdcweb.dto.request.SignInRequest;
 import com.nnt.fdcweb.dto.response.AuthCredentialsResponse;
 import com.nnt.fdcweb.entity.AuthCredentials;
 import com.nnt.fdcweb.entity.User;
-import com.nnt.fdcweb.enums.ErrorCode;
+import com.nnt.fdcweb.enums.ResponseCode;
 import com.nnt.fdcweb.mapper.AuthCredentialsMapper;
 import com.nnt.fdcweb.repository.AuthCredentialsRepository;
 import com.nnt.fdcweb.repository.UserRepository;
@@ -34,10 +34,10 @@ public class AuthCredentialsServiceImplement implements AuthCredentialsService {
     public User signIn(SignInRequest signInRequest) {
         AuthCredentials authCredentials = authCredentialsRepository
                 .findByPhone(signInRequest.getPhone()).orElseThrow(()
-                -> new AppException(ErrorCode.INVALID_CREDENTIALS));
+                -> new AppException(ResponseCode.INVALID_CREDENTIALS));
         if (!passwordEncoder.matches(signInRequest.getPassword(), authCredentials
                 .getPassword())) {
-            throw new AppException(ErrorCode.INVALID_CREDENTIALS);
+            throw new AppException(ResponseCode.INVALID_CREDENTIALS);
         }
         return authCredentials.getUser();
     }

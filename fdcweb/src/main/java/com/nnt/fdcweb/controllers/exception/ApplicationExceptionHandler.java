@@ -31,10 +31,10 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(AppException.class)
     public ResponseEntity<ApiResponse<Void>> appExceptionHandler(AppException appException) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setCode(appException.getErrorCode().getCode());
-        apiResponse.setMessage(appException.getErrorCode().getMessage());
+        apiResponse.setCode(appException.getResponseCode().getCode());
+        apiResponse.setMessage(appException.getResponseCode().getMessage());
         apiResponse.setData(null);
-        return ResponseEntity.status(appException.getErrorCode().getHttpStatusCode()).body(apiResponse);
+        return ResponseEntity.status(appException.getResponseCode().getHttpStatusCode()).body(apiResponse);
     }
 
 //    @ExceptionHandler(JOSEException.class)

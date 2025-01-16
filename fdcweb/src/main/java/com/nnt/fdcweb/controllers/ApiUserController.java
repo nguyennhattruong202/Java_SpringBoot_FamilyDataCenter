@@ -63,12 +63,7 @@ public class ApiUserController {
     }
 
     @DeleteMapping(value = "/user/delete/{id}")
-    public ResponseEntity<ApiResponse<String>> delete(@PathVariable(value = "id") String id) {
-        userService.delete(id);
-        ApiResponse<String> apiResponse = new ApiResponse<>();
-        apiResponse.setCode(ResponseCode.OK.getCode());
-        apiResponse.setMessage(ResponseCode.OK.getMessage());
-        apiResponse.setData("User deleted");
-        return ResponseEntity.status(ResponseCode.OK.getHttpStatusCode()).body(apiResponse);
+    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable(value = "id") String id) {
+        return ResponseEntity.status(ResponseCode.DELETED.getHttpStatusCode()).body(userService.delete(id));
     }
 }
