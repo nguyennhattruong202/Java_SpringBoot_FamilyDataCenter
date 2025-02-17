@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>FDC | Create account</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/public/css/create-account.css" />
+    <title>FDC | Đăng ký</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/public/css/sign-in-up.css" />
 </head>
 
 <body>
@@ -14,13 +14,12 @@
             <h1>FDC | FAMILY DATA CENTER</h1>
         </div>
         <div class="container__right">
-            <form id="user-form">
+            <form id="form-sign-up">
                 <h3>Tạo tài khoản</h3>
                 <br /><br />
                 <label for="fullname">Họ và tên</label>
                 <input type="text" id="fullname" name="fullname" required />
-                <br />
-                <br />
+                <br /><br />
                 <input type="radio" id="male" name="gender" value="Nam" checked />
                 <label for="male">Nam</label>
                 <input type="radio" id="female" name="gender" value="Nữ" />
@@ -36,13 +35,13 @@
                 <input type="password" id="password" name="password" required />
                 <br /><br />
                 <div class="container--action">
-                    <a href="#">Đăng nhập</a>
+                    <a href="/templates/public/sign-in.html">Đăng nhập</a>
                     <button type="submit">Tạo tài khoản</button>
                 </div>
             </form>
         </div>
     </div>
-    <script src="/static/public/js/create-account.js"></script>
+    <script src="/static/public/js/sign-up.js"></script>
 </body>
 
 </html>

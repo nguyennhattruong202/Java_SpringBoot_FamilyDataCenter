@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FDC | Đăng nhập</title>
+    <link rel="stylesheet" href="/static/public/css/sign-in-up.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="container__left">
+            <h1>FDC | FAMILY DATA CENTER</h1>
+        </div>
+        <div class="container__right">
+            <form action="#" id="form__sign-in">
+                <h3>Đăng nhập</h3>
+                <br /><br />
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" required />
+                <br /><br />
+                <label for="">Mật khẩu</label>
+                <input type="password" id="password" name="password" required />
+                <br /><br />
+                <input type="checkbox" id="show-password" name="show-password" />
+                <label for="show-password">Hiển thị mật khẩu</label>
+                <br /><br />
+                <div class="container--action">
+                    <a href="/templates/public/sign-up.html">Tạo tài khoản</a>
+                    <button type="submit">Đăng nhập</button>
+                </div>
+                <br /><br />
+                <div class="box__forgot-password"><a href="#">Quên mật khẩu</a></div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/public/js/sign-in.js"></script>
+</body>
+
+</html>

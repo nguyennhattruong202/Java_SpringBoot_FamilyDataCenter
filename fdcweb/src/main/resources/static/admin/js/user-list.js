@@ -19,15 +19,14 @@ async function getUserHandler() {
                     <td>${data.data[i].dateOfBirth}</td>
                     <td>${data.data[i].phone}</td>
                     <td>
-                        <a href="#"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/admin/user/${data.data[i].id}"><i class="fa-solid fa-pen"></i></a>
                         <button type="button" class="delete-btn"><i class="fa-solid fa-trash delete-user"></i></button>
                     </td>
                 </tr>
             `;
         }
         document.getElementById("data-container").innerHTML = msg;
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Fetch error', error);
     }
 }
@@ -35,7 +34,7 @@ async function getUserHandler() {
 async function deleteUser(userId, rowElement) {
     try {
         const response = await fetch(`${deleteUserEndpoint}/${userId}`, {
-            method: 'DELETE',
+            method: 'DELETE'
         });
 
         if (response.ok) {

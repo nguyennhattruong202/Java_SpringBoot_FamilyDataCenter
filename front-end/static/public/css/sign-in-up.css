@@ -74,14 +74,18 @@ input:focus {
     text-align: center;
 }
 
-.container--action>button[type="submit"] {
+.container--action>button[type="submit"],
+.container--action>a {
     padding: 10px 30px;
-    background-color: #0284c7;
     border-radius: 30px;
-    border: none;
-    color: #fff;
     cursor: pointer;
     font-size: 16px;
+}
+
+.container--action>button[type="submit"] {
+    background-color: #0284c7;
+    border: none;
+    color: #fff;
     margin-left: 10px;
 }
 
@@ -90,10 +94,8 @@ input:focus {
 }
 
 .container--action>a {
-    padding: 10px 30px;
     color: #777;
     border: 1px solid #777;
-    border-radius: 30px;
     text-decoration: none;
     margin-right: 10px;
 }
@@ -101,4 +103,17 @@ input:focus {
 .container--action>a:hover {
     background-color: #777;
     color: #fff;
+}
+
+.box__forgot-password {
+    text-align: center;
+}
+
+.box__forgot-password>a {
+    text-decoration: none;
+    color: #777;
+}
+
+.box__forgot-password>a:hover {
+    text-decoration: underline;
 }

@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>FDC | Admin dashboard</title>
-        <link rel="stylesheet" th:href="@{/admin/css/dashboard.css}">
-    </head>
-    <body>
-        <div class="dashboard">
-            <aside class="sidebar">
-                <h2>FDC</h2>
-                <nav>
-                    <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Users</a></li>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                </nav>
-            </aside>
-            <div class="main">
-                <header class="header">
-                    <h1>Welcome, Admin</h1>
-                    <div class="header-actions">
-                        <button>Notifications</button>
-                        <button>Profile</button>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDC | Admin</title>
+    <link rel="stylesheet" th:href="@{/admin/css/admin-style.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/dashboard.css}">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>FDC</h2>
+            <nav>
+                <ul>
+                    <li><a th:href="@{/admin/dashboard}">Trang chủ</a></li>
+                    <li><a th:href="@{/admin/users}">Quản lý người dùng</a></li>
+                    <li><a href="#">Báo cáo</a></li>
+                    <li><a href="#">Cài đặt</a></li>
+                    <li><a href="#">Đăng xuất</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="main">
+            <header class="header">
+                <h1>Welcome, Admin</h1>
+                <div class="header-actions">
+                    <button>Thông báo</button>
+                    <button>Tài khoản</button>
+                </div>
+            </header>
+            <div class="content">
+                <h2>Tổng quan</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Người dùng</h3>
+                        <p>1,200</p>
                     </div>
-                </header>
-                <div class="content">
-                    <h2>Overview</h2>
-                    <div class="cards">
-                        <div class="card">
-                            <h3>Users</h3>
-                            <p>1,200</p>
-                        </div>
-                        <div class="card">
-                            <h3>Reports</h3>
-                            <p>85</p>
-                        </div>
-                        <div class="card">
-                            <h3>Revenue</h3>
-                            <p>$34,000</p>
-                        </div>
+                    <div class="card">
+                        <h3>Báo cáo</h3>
+                        <p>85</p>
+                    </div>
+                    <div class="card">
+                        <h3>Doanh thu</h3>
+                        <p>$34,000</p>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
