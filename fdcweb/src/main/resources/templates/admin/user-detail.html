@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FDC | Admin</title>
+        <link rel="stylesheet" th:href="@{/admin/css/admin-style.css}">
+        <link rel="stylesheet" th:href="@{/admin/css/user-detail.css}">
+    </head>
+
+    <body>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>FDC</h2>
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/admin/dashboard}">Trang chủ</a></li>
+                        <li><a th:href="@{/admin/users}">Quản lý người dùng</a></li>
+                        <li><a href="#">Báo cáo</a></li>
+                        <li><a href="#">Cài đặt</a></li>
+                        <li><a href="#">Đăng xuất</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="main">
+                <header class="header">
+                    <h1>Welcome, Admin</h1>
+                    <div class="header-actions">
+                        <button>Thông báo</button>
+                        <button>Tài khoản</button>
+                    </div>
+                </header>
+                <div class="content">
+                    <h2>Thông tin người dùng</h2>
+                    <form action="">
+                        <label for="fullname">Họ và tên</label>
+                        <input type="text" id="fullname" name="fullname">
+                        <br><br>
+                        <div class="container-grid">
+                            <div>
+                                <label for="gender">Giới tính</label>
+                                <select name="gender" id="gender">
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="dateOfBirth">Ngày sinh</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="container-grid">
+                            <div>
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                        </div>
+                        <br>
+                        <label for="citizenIdentificationNumber">CCCD</label>
+                        <input type="text" name="citizenIdentificationNumber" id="citizenIdentificationNumber">
+                        <br><br>
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" id="address" name="address">
+                        <br><br>
+                        <label for="note">Ghi chú</label>
+                        <textarea name="note" id="note"></textarea>
+                        <br>
+                        <div class="container-action">
+                            <button type="button" class="submit-btn">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

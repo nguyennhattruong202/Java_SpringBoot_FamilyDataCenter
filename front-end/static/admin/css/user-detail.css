@@ -1,0 +1,40 @@
+input,
+#gender,
+#note {
+    width: 100%;
+    padding: 10px 5px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+
+.container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.container-action {
+    text-align: end;
+}
+
+.submit-btn {
+    padding: 10px 30px;
+    background-color: #0284c7;
+    border-radius: 30px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0070a8;
+}
+
+input:focus,
+#gender:focus,
+#note:focus {
+    outline: none;
+}
+form{
+    margin-top: 10px;
+}

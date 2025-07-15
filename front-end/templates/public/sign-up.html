@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>FDC | Đăng ký</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/public/css/sign-in-up.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="container__left">
+            <h1>FDC | FAMILY DATA CENTER</h1>
+        </div>
+        <div class="container__right">
+            <form id="form-sign-up">
+                <h3>Tạo tài khoản</h3>
+                <br /><br />
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" required />
+                <br /><br />
+                <input type="radio" id="male" name="gender" value="Nam" checked />
+                <label for="male">Nam</label>
+                <input type="radio" id="female" name="gender" value="Nữ" />
+                <label for="female">Nữ</label>
+                <br /><br />
+                <label for="date-of-birth">Ngày sinh</label>
+                <input type="date" id="date-of-birth" name="date-of-birth" required />
+                <br /><br />
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" required />
+                <br /><br />
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required />
+                <br /><br />
+                <div class="container--action">
+                    <a href="/templates/public/sign-in.html">Đăng nhập</a>
+                    <button type="submit">Tạo tài khoản</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/public/js/sign-up.js"></script>
+</body>
+
+</html>

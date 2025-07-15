@@ -1,0 +1,39 @@
+#users {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#users th,
+#users td {
+    padding: 8px;
+}
+
+#users tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#users th {
+    text-align: left;
+    background-color: #0284c7;
+    color: #fff;
+}
+
+#users tr:hover {
+    background-color: #ddd;
+}
+
+.delete-btn {
+    border: none;
+    color: #bc0000;
+    cursor: pointer;
+    font-size: 16px;
+    background: transparent;
+}
+
+td a {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #0284c7;
+}
